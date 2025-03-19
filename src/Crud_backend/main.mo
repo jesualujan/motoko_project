@@ -52,7 +52,7 @@ actor {
         Debug.print("Cannot find persona.");  // Imprimimos un mensaje de error.
         return false;  // Retornamos falso porque no se encontró la persona.
       };
-         case (?currentPersona) {  // Si encontramos la persona.
+         case (?_currentPersona) {  // Si encontramos la persona.
           // Creamos una nueva persona con los nuevos datos.
           let updatedPersona: Persona = {
         name = newName;
