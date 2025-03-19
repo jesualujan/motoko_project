@@ -3,6 +3,7 @@ import { idlFactory } from "../../declarations/Crud_backend"; // Ajusta la ruta 
 
 // Configura el agente con la dirección de tu servidor local
 const agent = new HttpAgent({ host: "http://127.0.0.1:4943" });
+agent.fetchRootKey(); // Necesario en modo local
 
 // Obtén el ID de tu canister local
 const canisterId = "be2us-64aaa-aaaaa-qaabq-cai";
