@@ -18,6 +18,8 @@ target/
 
 # frontend code
 node_modules/
+package-lock.json   
+.gitignore
 dist/
 .svelte-kit/
 
