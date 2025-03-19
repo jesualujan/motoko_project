@@ -1,0 +1,52 @@
+// Variables para colores y fuentes
+$primary-color: #007bff;
+$success-color: #28a745;
+$border-color: #ced4da;
+$input-bg: #f8f9fa;
+$font-family: 'Arial, sans-serif';
+
+// Estilo del contenedor del formulario
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: $font-family;
+
+  input[type="text"] {
+    padding: 0.75rem;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    background: $input-bg;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 5px rgba($primary-color, 0.5);
+    }
+  }
+
+  .btn {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid $success-color;
+    border-radius: 4px;
+    background: transparent;
+    color: $success-color;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &.btn-outline-success:hover {
+      background: $success-color;
+      color: #fff;
+    }
+  }
+}
