@@ -1,30 +1,15 @@
-import { useState } from 'react';
-import { Crud_backend } from 'declarations/Crud_backend';
+import React from "react";
+import CreatePerson from "./Components/CreatePerson/CreatePerson";
+
 
 function App() {
-  const [greeting, setGreeting] = useState('');
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    const name = event.target.elements.name.value;
-    Crud_backend.greet(name).then((greeting) => {
-      setGreeting(greeting);
-    });
-    return false;
-  }
-
+ 
   return (
-    <main>
+    <>
       <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting">{greeting}</section>
-    </main>
+      <CreatePerson/>
+    </>
+    
   );
 }
 
