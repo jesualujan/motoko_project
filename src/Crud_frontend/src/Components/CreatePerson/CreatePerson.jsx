@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { backendActor } from "../../agent";
+import './styles.scss'
 
 
 const CreatePerson = () => {
@@ -34,7 +35,7 @@ const CreatePerson = () => {
         value={profileImage}
         onChange={(e) => setProfileImage(e.target.value)}
       />
-      <button type="submit">Crear Persona</button>
+      <button type="submit" class="btn btn-outline-success">Crear Persona</button>
     </form>
     </>
   
