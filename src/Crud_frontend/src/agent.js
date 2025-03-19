@@ -1,6 +1,5 @@
 import { HttpAgent, Actor } from "@dfinity/agent";
 import { idlFactory } from "../../declarations/Crud_backend"; // Ajusta la ruta según tu proyecto
-  // Archivo generado automáticamente
 
 // Configura el agente con la dirección de tu servidor local
 const agent = new HttpAgent({ host: "http://127.0.0.1:4943" });
