@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { backendActor } from "../../agent";
+import './styles.scss'
 
 const PersonasList = () => {
     // Estado para almacenar la lista de personas
@@ -29,15 +30,23 @@ const PersonasList = () => {
   return (
    <>
    <h2>Lista de Personas</h2>
-   <button onClick={ getPersonsById}>Ordenar por ID</button>
-   <button onClick={fetchPersonas}>Mostrar Lista de Personas</button> {/* Botón para obtener la lista */}
+   <button onClick={ getPersonsById} class="btn btn-outline-secondary"> Ordenar por ID</button>
+   <button onClick={fetchPersonas} class="btn btn-outline-primary">Mostrar Personas</button> {/* Botón para obtener la lista */}
    {mostrarLista && (
-        <ul>
+        <table  class="table table-striped-columns" border="2" style={{ marginTop: "10px", width: "100%", textAlign: "center" }}>
+        <thead>
+          <tr class="table-secondary">
+            <th scope="row">ID</th>
+            <th scope="row">Nombre</th>
+            <th scope="row">Foto de Perfil</th>
+          </tr>
+        </thead>
+        <tbody>
           {personas.map(([key, persona]) => (
-            <li key={key}>
-              <p>ID: {key}</p>
-              <p>Nombre: {persona.name}</p>
-              <p>
+            <tr key={key}>
+              <td>ID: {key}</td>
+              <td>Nombre: {persona.name}</td>
+              <td>
                 Foto de perfil:{" "}
                 <a
                   href={persona.profileImage}
@@ -46,10 +55,11 @@ const PersonasList = () => {
                 >
                   {persona.profileImage}
                 </a>
-              </p>
-            </li>
+              </td>
+            </tr>
           ))}
-        </ul>
+          </tbody>
+          </table>
       )}
    </>
   )
