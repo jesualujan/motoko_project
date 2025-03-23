@@ -13,15 +13,23 @@ const CreatePerson = () => {
     e.preventDefault();
     try {
       // Llama al backend con los nuevos campos.
-      await backendActor.createPersona(name, lastName, city, profileImage);
+      const response = await backendActor.createPersona(name, lastName, city, profileImage);
+
+      // Si el backend devuelve `false`, significa que el usuario ya existe
+      if (response === false) {
+        alert(`Error: El usuario con nombre "${name}" y apellido "${lastName}" ya fue registrado anteriormente.`);
+        return;
+      }
+      
       setName("");
       setLastName("");
       setCity("");
       setProfileImage("");
+    
       alert("Persona creada exitosamente!");
     } catch (error) {
       console.error("Error al crear la persona:", error);
-      alert("Hubo un error al crear la persona. Revisa la consola.");
+      alert("Hubo un error inesperado al crear la persona. Revisa la consola.");
     }
   };
 
