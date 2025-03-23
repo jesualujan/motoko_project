@@ -63,16 +63,25 @@ actor {
   };
 
   // Función para actualizar los datos de una persona.
-  public func updatePersona(key: Text, newName: Text, newLastName: Text, newCity: Text, newProfileImage: Text) : async Bool {
+public func updatePersona(key: Text, newName: Text, newLastName: Text, newCity: Text, newProfileImage: Text) : async Bool {
     let persona: ?Persona = personas.get(key);  // Buscamos la persona con el ID proporcionado.
 
     switch (persona) {
       case (null) {
-        Debug.print("Cannot find persona.");  // Mensaje de error.
+        Debug.print("Error: No se encontró la persona con el ID proporcionado.");  // Mensaje de error.
         return false;  // Retornamos falso porque no se encontró la persona.
       };
       case (?_currentPersona) {
-        // Creamos una nueva estructura con los datos actualizados.
+        // Validamos si el nuevo nombre y apellido ya existen en otro usuario.
+        let personaIter: Iter.Iter<(Text, Persona)> = personas.entries();
+        for ((existingKey, existingPersona) in personaIter) {
+          if (existingKey != key and existingPersona.name == newName and existingPersona.lastName == newLastName) {
+            Debug.print("Error: Usuario con nombre '" # newName # "' y apellido '" # newLastName # "' ya existe.");
+            return false;  // Retornamos falso porque los datos ya existen en otro usuario.
+          }
+        };
+
+        // Si no hay conflicto, actualizamos los datos.
         let updatedPersona: Persona = {
           name = newName;
           lastName = newLastName;
@@ -81,7 +90,7 @@ actor {
         };
         personas.put(key, updatedPersona);  // Actualizamos los datos en el HashMap.
         Debug.print("Persona actualizada exitosamente.");  // Mensaje de éxito.
-        return true;  // Retornamos verdadero porque la persona fue actualizada.
+        return true;  // Retornamos verdadero porque la persona fue actualizada correctamente.
       };
     };
   };
