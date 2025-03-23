@@ -46,15 +46,18 @@ const UpdatedPerson = () => {
         newCity,
         newProfileImage
       );
-      if (success) {
+      if (success === true) {
         alert("Persona actualizada exitosamente.");
         setPersona(null); // Reinicia el formulario
         setNewName("");
         setNewLastName("");
         setNewCity("");
         setNewProfileImage("");
-      } else {
-        alert("Error al actualizar la persona.");
+      } else if (success === false) {
+        alert(
+          `Error: El usuario con el nombre "${newName}" y el apellido "${newLastName}" ya existe. No se puede actualizar.`
+        );
+        return;
       }
     } catch (error) {
       console.error("Error al actualizar la persona:", error);
