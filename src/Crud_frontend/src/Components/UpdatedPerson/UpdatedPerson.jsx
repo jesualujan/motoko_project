@@ -10,7 +10,6 @@ const UpdatedPerson = () => {
   const [newName, setNewName] = useState("");
   const [newLastName, setNewLastName] = useState("");
   const [newCity, setNewCity] = useState("");
-  const [newAge, setNewAge] = useState("");
   const [newProfileImage, setNewProfileImage] = useState("");
 
   // Funcion para buscar una persona por nombre   
@@ -40,18 +39,11 @@ const UpdatedPerson = () => {
     }
 
     try {
-      const ageNat = Number(newAge); // Convierte la nueva edad a Nat
-      if (isNaN(ageNat) || ageNat < 0) {
-        alert("Por favor, ingresa una edad válida.");
-        return;
-      }
-
       const success = await backendActor.updatePersona(
         persona.id,
         newName,
         newLastName,
         newCity,
-        ageNat,
         newProfileImage
       );
       if (success) {
@@ -60,7 +52,6 @@ const UpdatedPerson = () => {
         setNewName("");
         setNewLastName("");
         setNewCity("");
-        setNewAge("");
         setNewProfileImage("");
       } else {
         alert("Error al actualizar la persona.");
@@ -105,12 +96,6 @@ const UpdatedPerson = () => {
             placeholder="Nueva ciudad"
             value={newCity}
             onChange={(e) => setNewCity(e.target.value)}
-          />
-          <input
-            type="number"
-            placeholder="Nueva edad"
-            value={newAge}
-            onChange={(e) => setNewAge(e.target.value)}
           />
           <input
             type="text"
