@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { backendActor } from "../../agent";
+import { FaRegTrashAlt } from "react-icons/fa";
 import './styles.scss';
 
 const PersonasList = () => {
@@ -89,6 +90,7 @@ const PersonasList = () => {
                     className="btn btn-danger"
                   >
                     Eliminar
+                    <FaRegTrashAlt />
                   </button>
                 </td>
               </tr>

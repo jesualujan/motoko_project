@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { backendActor } from "../../agent";
+import { FaArrowRightLong } from "react-icons/fa6";
 import './styles.scss';
 
 const CreatePerson = () => {
@@ -51,7 +52,7 @@ const CreatePerson = () => {
           value={profileImage}
           onChange={(e) => setProfileImage(e.target.value)}
         />
-        <button type="submit" className="btn btn-outline-success">Crear Persona</button>
+        <button type="submit" className="btn btn-outline-success">Enviar <FaArrowRightLong /> </button>
       </form>
     </>
   );
