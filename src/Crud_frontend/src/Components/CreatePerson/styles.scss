@@ -5,6 +5,21 @@ $border-color: #ced4da;
 $input-bg: #f8f9fa;
 $font-family: 'Arial, sans-serif';
 
+@mixin inputs_forms{
+  padding: 0.75rem;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  background: $input-bg;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 5px rgba($primary-color, 0.5);
+  }
+}
+
 // Estilo del contenedor del formulario
 form {
   display: flex;
@@ -20,18 +35,11 @@ form {
   font-family: $font-family;
 
   input[type="text"] {
-    padding: 0.75rem;
-    border: 1px solid $border-color;
-    border-radius: 4px;
-    background: $input-bg;
-    font-size: 1rem;
-    transition: border-color 0.2s;
+    @include inputs-forms;
+  }
 
-    &:focus {
-      outline: none;
-      border-color: $primary-color;
-      box-shadow: 0 0 5px rgba($primary-color, 0.5);
-    }
+  input[type="number"] {
+    @include inputs-forms;
   }
 
   .btn {
